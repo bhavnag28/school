@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+</head>
+<body>
+    <h2>Student Data</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Aadhar Card Number</th>
+                <th>Date of Birth</th>
+                <th>Identification Marks</th>
+                <th>Admission Category</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Email</th>
+                <th>Contact Detail</th>
+                <th>Address</th>
+                <!-- Add additional headers for Parent and AcademicDetails if needed -->
+                <th>Father Name</th>
+                <th>Father Qualification</th>
+                <th>Mother Name</th>
+                <th>Mother Qualification</th>
+                <th>Enrollment ID</th>
+                <th>Class Name</th>
+                <th>Section</th>
+                <th>Date of Joining</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.gender }}</td>
+                    <td>{{ item.adhar_card_number }}</td>
+                    <td>{{ item.dob }}</td>
+                    <td>{{ item.identification_marks }}</td>
+                    <td>{{ item.admission_category }}</td>
+                    <td>{{ item.height }}</td>
+                    <td>{{ item.weight }}</td>
+                    <td>{{ item.mail_id }}</td>
+                    <td>{{ item.contact_detail }}</td>
+                    <td>{{ item.address }}</td>
+                    {% if item.parent %}
+                        <td>{{ item.parent.father_name }}</td>
+                        <td>{{ item.parent.father_qualification }}</td>
+                        <td>{{ item.parent.mother_name }}</td>
+                        <td>{{ item.parent.mother_qualification }}</td>
+                    {% else %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    {% endif %}
+                    {% if item.academicdetails %}
+                        <td>{{ item.academicdetails.enrollment_id }}</td>
+                        <td>{{ item.academicdetails.class_name }}</td>
+                        <td>{{ item.academicdetails.section }}</td>
+                        <td>{{ item.academicdetails.doj }}</td>
+                    {% else %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
